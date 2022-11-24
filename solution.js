@@ -1,5 +1,5 @@
 function letterCombinations(input_digit) {
-  //brute force approach (assuming only two digits)
+  //brute force approach
   var numberStringHt = {
     2:"abc",
     3:"def",
@@ -14,13 +14,16 @@ function letterCombinations(input_digit) {
   var allCombinations = [];
 
   for (let i = 0; i < input_digit.length; i++) {
-    let currentString = numberStringHt[input_digit[i]];
-    let nextString = numberStringHt[input_digit[i+1]];
+    let firstString = numberStringHt[input_digit[i]] || "";
+    let secondString = numberStringHt[input_digit[i+1]] || "";
+    let thirdString = numberStringHt[input_digit[i+2]] || "";
 
-    if(nextString){
-      for (const currentLetter of currentString) {
-        for (let nextLetter of nextString) {
-          allCombinations.push(currentLetter + nextLetter)
+    if(secondString){
+      for (const firstLetter of firstString) {
+        for (let secondLetter of secondString) {
+          for(let thirdLetter of thirdString){
+            allCombinations.push(firstLetter + secondLetter + thirdLetter)
+          }
         }
       }
     }
