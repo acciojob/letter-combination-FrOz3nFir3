@@ -21,8 +21,12 @@ function letterCombinations(input_digit) {
     if(secondString){
       for (const firstLetter of firstString) {
         for (let secondLetter of secondString) {
-          for(let thirdLetter of thirdString){
-            allCombinations.push(firstLetter + secondLetter + thirdLetter)
+          if(input_digit.length == 3){
+            for(let thirdLetter of thirdString){
+              allCombinations.push(firstLetter + secondLetter + thirdLetter)
+            }
+          }else{
+              allCombinations.push(firstLetter + secondLetter)
           }
         }
       }
